@@ -1,0 +1,17 @@
+{
+  "name": "youtube-video",
+  "homepage": "https://github.com/joinbox/youtube-video",
+  "authors": [
+    "Felix Steiner"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
