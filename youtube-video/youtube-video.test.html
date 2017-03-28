@@ -1,0 +1,44 @@
+<script src="youtube-loader.es2015.js"></script>
+<script src="youtube-video.es2015.js"></script>
+
+<h3>Regular</h3>
+<youtube-video identifier="hPNSz_xX0nk"></youtube-video>
+
+<h3>No controls, autoplay</h3>
+<youtube-video identifier="kf57_AZHc1U" player-vars='{"controls":0, "autoplay":true}'></youtube-video>
+
+<h3>Play/Stop/Events</h3>
+
+<youtube-video identifier="kf57_AZHc1U" id="method-test"></youtube-video>
+
+<script>
+	/* global document, alert */
+	const player = document.querySelector('#method-test');
+
+	player.addEventListener('play', () => {
+		setTimeout(() => player.pause(), 5000);
+	});
+
+	player.addEventListener('pause', () => {
+		setTimeout(() => player.play(), 5000);
+	});
+
+	player.addEventListener('end', () => {
+		console.error('END!');
+	});
+
+	player.addEventListener('ready', () => {
+		player.play();
+	});
+
+	// Check if dom events were fired correctly
+	let readyFired = 0;
+	document.querySelector('html').addEventListener('ready', () => {
+		console.error('Player ready');
+		readyFired++;
+	});
+	setTimeout(() => {
+		if (readyFired !== 3) alert('Events not fired');
+	}, 5000);
+
+</script>
