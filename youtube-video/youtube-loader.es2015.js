@@ -29,7 +29,10 @@
 
 			console.log('YouTubeLoader: Load YouTube API');
 
-			if (_isLoading) return;
+			if (_isLoading) {
+				console.log('YoutubeLoader: Already loading');
+				return;
+			}
 
 			_isLoading = true;
 

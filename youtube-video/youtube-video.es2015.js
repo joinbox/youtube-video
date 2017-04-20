@@ -19,10 +19,18 @@
 				this._setupVideo();
 			}
 
+			this._parent = this.parentElement;
+
 			this._emitEvent('add-video', { element: this });
 
 		}
 
+
+
+		disconnectedCallback() {
+			this._emitEvent('remove-video', { element: this }, this._parent);
+			this._parent = undefined;
+		}
 
 
 		/**
@@ -137,10 +145,10 @@
 		* @param {String} type		Type of callbacks to execute
 		* @param {Any} args			Arguments to pass to the callback
 		*/
-		_emitEvent(type, args) {
-			console.log('YouTubeVideo: Emit event %o', type);
+		_emitEvent(type, args, element) {
+			console.log('YouTubeVideo: Emit event %o on %o', type, element);
 			const event = new CustomEvent(type, { detail: args, bubbles: true });
-			this.dispatchEvent(event);
+			(element || this).dispatchEvent(event);
 		}
 
 

@@ -8,8 +8,12 @@
 <youtube-video identifier="kf57_AZHc1U" player-vars='{"controls":0, "autoplay":true}'></youtube-video>
 
 <h3>Play/Stop/Events</h3>
-
 <youtube-video identifier="kf57_AZHc1U" id="method-test"></youtube-video>
+
+<h3>Add/Remove</h3>
+<div id="add-remove-parent">
+	<youtube-video identifier="AslncyG8whg" id="add-remove-test"></youtube-video>
+</div>
 
 <script>
 	/* global document, alert */
@@ -38,7 +42,35 @@
 		readyFired++;
 	});
 	setTimeout(() => {
-		if (readyFired !== 3) alert('Events not fired');
+		if (readyFired !== 4) alert('Events not fired, nr is ' + readyFired);
 	}, 5000);
+
+</script>
+
+
+<script>
+
+	const wrapper = document.getElementById('add-remove-parent');
+	let rmFired = 0;
+
+	wrapper.addEventListener('add-video', (ev) => {
+		console.error('add', ev);
+	});
+
+	wrapper.addEventListener('remove-video', (ev) => {
+		console.error('rm', ev);
+		rmFired++;
+	});
+
+	wrapper.addEventListener('ready', () => {
+		setTimeout(() => {
+			wrapper.innerHTML = '';
+			setTimeout(() => {
+				if (rmFired !== 1) {
+					alert('rm not fired');
+				}
+			}, 2000);
+		}, 2000);
+	});
 
 </script>
