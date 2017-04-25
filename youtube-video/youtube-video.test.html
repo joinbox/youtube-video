@@ -4,7 +4,10 @@
 <h3>Regular</h3>
 <youtube-video identifier="hPNSz_xX0nk"></youtube-video>
 
-<h3>No controls, autoplay</h3>
+<h3>Mute</h3>
+<youtube-video identifier="AslncyG8whg" id="add-remove-test" muted></youtube-video>
+
+<h3>No controls, autoplay (playerVars)</h3>
 <youtube-video identifier="kf57_AZHc1U" player-vars='{"controls":0, "autoplay":true}'></youtube-video>
 
 <h3>Play/Stop/Events</h3>
@@ -14,6 +17,7 @@
 <div id="add-remove-parent">
 	<youtube-video identifier="AslncyG8whg" id="add-remove-test"></youtube-video>
 </div>
+
 
 <script>
 	/* global document, alert */
@@ -42,7 +46,7 @@
 		readyFired++;
 	});
 	setTimeout(() => {
-		if (readyFired !== 4) alert('Events not fired, nr is ' + readyFired);
+		if (readyFired !== 5) alert('Events not fired, nr is ' + readyFired);
 	}, 5000);
 
 </script>

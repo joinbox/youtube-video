@@ -60,7 +60,10 @@
 			const options = {
 				videoId				: this._identifier
 				, events			: {
-					onReady			: () => this._emitEvent('ready')
+					onReady			: () => {
+						if (this.hasAttribute('muted')) this._player.mute();
+						this._emitEvent('ready');
+					}
 					, onStateChange	: (ev) => {
 						if (ev.data === YT.PlayerState.ENDED) this._emitEvent('end');
 						else if (ev.data === YT.PlayerState.PLAYING) this._emitEvent('play');
@@ -76,6 +79,7 @@
 
 			// Setup and store player
 			this._player = new YT.Player(temporaryChild, options);
+			console.log('YouTubeVideo: Initialize player with options %o, element %o', options, temporaryChild);
 
 		}
 
