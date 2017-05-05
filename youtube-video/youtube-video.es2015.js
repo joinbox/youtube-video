@@ -119,7 +119,7 @@
 		*/
 		play() {
 			console.log('YouTubeVideo: Play %o', this._identifier);
-			if (this._player) this._player.playVideo();
+			if (this._player && typeof this._player.playVideo === 'function') this._player.playVideo();
 			else console.warn('YouTubeVideo: Cannot play video until it\'s ready. Listen to the ready event before playing a video');
 		}
 
@@ -131,7 +131,7 @@
 		*/
 		pause() {
 			console.log('YouTubeVideo: Pause %o', this._identifier);
-			if (this._player) this._player.pauseVideo();
+			if (this._player && typeof this._player.pauseVideo === 'function') this._player.pauseVideo();
 			else console.warn('YouTubeVideo: Cannot pause video until it\'s ready. Listen to the ready event before pausing a video');
 		}
 
