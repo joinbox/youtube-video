@@ -145,6 +145,14 @@
 
 
 		/**
+		* Calls seekTo on video
+		*/
+		goTo(seconds) {
+			this._player && typeof this._player.seekTo === 'function' && this._player.seekTo(seconds);
+		}
+
+
+		/**
 		* Simply emits events
 		* @param {String} type		Type of callbacks to execute
 		* @param {Any} args			Arguments to pass to the callback

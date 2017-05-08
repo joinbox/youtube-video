@@ -10,7 +10,7 @@
 <h3>No controls, autoplay (playerVars)</h3>
 <youtube-video identifier="kf57_AZHc1U" player-vars='{"controls":0, "autoplay":true}'></youtube-video>
 
-<h3>Play/Stop/Events</h3>
+<h3>Play/Stop/Events (autoplays/pauses/plays/rewinds)</h3>
 <youtube-video identifier="kf57_AZHc1U" id="method-test"></youtube-video>
 
 <h3>Add/Remove</h3>
@@ -24,11 +24,13 @@
 	const player = document.querySelector('#method-test');
 
 	player.addEventListener('play', () => {
+		player.goTo(30);
 		setTimeout(() => player.pause(), 5000);
 	});
 
 	player.addEventListener('pause', () => {
-		setTimeout(() => player.play(), 5000);
+		setTimeout(() => player.goTo(2), 3000);
+		setTimeout(() => player.play(), 6000);
 	});
 
 	player.addEventListener('end', () => {
